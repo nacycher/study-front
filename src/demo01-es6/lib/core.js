@@ -52,3 +52,70 @@ function hh({name, age, email}){
     console.log(name, age, email)
 }
 hh(person);
+
+// 4.1 链判断，安全的取出对象属性
+let message = {
+    body: {
+        user: {
+            username: 'my name'
+        }
+    }
+};
+// 传统的判断, 每个对象都可能为null，导致报错
+// console.log(message.body.user.username);
+// console.log((message && body && user) || 'default');
+let username = message?.body?.user?.username || 'default';
+console.log(username);
+
+// 5. 参数默认值
+// 建议有默认值的参数，放在参数列表的最后
+function add(a,b = 5) {
+    // 以前的写法
+    // b = b || 10;
+    return a + b;
+}
+console.log(add(1));
+
+// 6. 箭头函数
+// 简化方法声明的语法糖
+function print(a) {
+    console.log(a);
+}
+let print1 = function (a) {
+    console.log(a);
+}
+let print2 = (aug) => {
+    console.log(aug);
+}
+
+print2("hello => method")
+
+let sum = (a, b) => a + b;
+console.log(sum(1, 2));
+
+// 7. 模板字符串
+// 取代之前拼字符串的方式，使用${}来拼接，使用反引号声明一个模板字符串
+let warning = `${person.name}登录失败，请先检查验证码是否正确`;
+console.log(warning);
+
+// 8.promise
+// 代表异步对象，用于处理异步操作
+// 使用fetch方法获取数据
+// promise 有三种状态
+// 1. 成功状态
+// 2. 失败状态
+// 3. 等待状态
+const url = "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json";
+console.log(1);
+let promise = fetch(url);
+promise.then(resp => {
+    // console.log("响应数据", resp);
+    resp.json().then(data => {
+        console.log(data);
+    })
+}).catch(error => console.log("远程抓取失败" ,error));
+console.log(2);
+// 操作成功后
+// promise.then();
+// 操作失败后
+// promise.catch();
