@@ -146,3 +146,30 @@ console.log(2);
 //     });
 // }
 // get(url).then(rsp => {});
+
+
+// 9.async函数
+// 简化promise的使用
+async function fun1() {
+    let x = 101;
+    if (x %2 == 0) {
+        return x;
+    } else {
+        return new Error("奇数")
+    }
+}
+fun1().then(data => console.log("then", data))
+    .catch(err => console.log("error", err));
+
+
+// await
+// 将异步操作转化为同步操作
+async function fetchProducts() {
+    let promise1 = await fetch(url);
+    let promise2 = await promise1.json();
+    console.log("promise2", promise2);
+}
+fetchProducts();
+
+// 模块化
+// 不同的业务代码，返到不同的js文件中
