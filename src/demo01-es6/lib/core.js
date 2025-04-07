@@ -119,3 +119,30 @@ console.log(2);
 // promise.then();
 // 操作失败后
 // promise.catch();
+
+// 自定义promise对象
+// new promise((resolve, reject) => {
+//     // 异步操作
+//     // 操作成功后
+//     resolve(data);
+//     // 操作失败后
+//     reject(error);
+// })
+// // 改造以前的JQuery请求方法
+// function get(url) {
+//     return new Promise((resolve, reject) => {
+//         $.ajax({
+//             url: url,
+//             type: "GET",
+//             success: function (data) {
+//                 resolve(data);
+//             },
+//             error: function (error) {
+//                 reject(error);
+//             }
+//         })
+//
+//
+//     });
+// }
+// get(url).then(rsp => {});
