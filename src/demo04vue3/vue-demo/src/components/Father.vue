@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 
 import Son from "./Son.vue";
 import {reactive, ref} from "vue";
