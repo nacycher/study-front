@@ -1,5 +1,5 @@
 <script setup>
-import {computed, reactive, ref} from "vue";
+import {computed, reactive, ref, watch, watchEffect} from "vue";
 
 let name = "张三";
 let car = reactive( {
@@ -49,6 +49,31 @@ const totalPrice = computed(() => {
 
 // 属性绑定，v-bind：单向绑定，只能数据到页面
 // 表单绑定，v-model：双向绑定
+
+
+
+// 8.监听 watch/watchEffect
+// 监听值的变化
+// watch(number, (value, oldValue) => {
+//   console.log("value", value);
+//   console.log("oldValue", oldValue);
+//
+//   if (value > 3) {
+//     alert("超出限购限制");
+//     number.value = 3;
+//   }
+// })
+// 监听所有响应式数据的变化
+watchEffect(()=>{
+  if (number.value > 3){
+    alert("超出限购限制");
+    number.value = 3;
+  }
+  if (car.price > 1012000){
+    alert("太贵了");
+  }
+})
+
 
 
 </script>
