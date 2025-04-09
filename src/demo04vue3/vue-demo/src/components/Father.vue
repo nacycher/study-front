@@ -18,14 +18,23 @@ function moneyMinis(arg) {
   alert("感知到儿子花了钱: " + arg);
   data.money += arg;
 }
+
+// 插槽，父子组件间页面模板的传递
 </script>
 
 <template>
 <div style="background-color: wheat">
   <h2>Father</h2>
   <button @click="data.money += 1">给儿子发1块钱</button>
-  <Son :money="data.money" :books="data.books" @buy="moneyMinis"/>
-<!--  <Son v-bind:data="data" />-->
+<!--  <Son :money="data.money" :books="data.books" @buy="moneyMinis"/>-->
+  <Son v-bind="data">
+    <template v-slot:title>
+      ahahahSon
+    </template>
+    <template #btn>
+      <button>买飞机</button>
+    </template>
+  </Son>
 </div>
 </template>
 

@@ -22,12 +22,16 @@ function buy() {
 <template>
   <div style="background-color: blue;color: white">
     <h3>Son</h3>
+    <h3>
+      <slot name="title">hhhhhhhhh </slot>
+    </h3>
     <div>账户：{{props.money}}</div>
     <div>
       图书：
       <li v-for="b in books">{{b}}</li>
     </div>
     <button @click="buy">花1块钱</button>
+    <slot name="btn"/>
   </div>
 </template>
 
